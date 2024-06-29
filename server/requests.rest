@@ -1,0 +1,57 @@
+GET http://localhost:3000/test/test
+
+###
+
+GET http://localhost:3000/auth/getall
+
+###
+
+POST http://localhost:3000/auth/register
+Content-Type: application/json
+
+{
+    "username": "Ana catanduva",
+    "password": "suvaco123",
+    "role": "USER"
+}
+
+###
+
+POST http://localhost:3000/auth/login
+Content-Type: application/json
+
+{
+    "username": "Johnss Travolta",
+    "password": "suvaco123"
+}
+
+###
+
+GET http://localhost:3000/posts
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiSmltIiwiaWF0IjoxNzE5NDM4Mzc5LCJleHAiOjE3MTk0MzgzOTR9.vRn73N4lfP1cbeOMThnKpfpEYiQ6eWtxyVygO7cEHtk
+###
+
+POST http://localhost:3000/token
+Content-Type: application/json
+
+{
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiSmltIiwiaWF0IjoxNzE5NDM4MzU2fQ.Zox3yR6-sEwGkdMcY21CVMXBXcOzTiD3l0puPTtaWgQ"
+}
+
+###
+
+POST http://localhost:3000/login
+Content-Type: application/json
+
+{
+    "username": "Jim"
+}
+
+###
+
+DELETE http://localhost:3000/logout
+Content-Type: application/json
+# must be refresh token
+{
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiSmltIiwiaWF0IjoxNzE5NDM4MzU2fQ.Zox3yR6-sEwGkdMcY21CVMXBXcOzTiD3l0puPTtaWgQ"
+}
