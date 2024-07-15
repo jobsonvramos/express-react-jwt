@@ -1,22 +1,28 @@
+# Use a imagem Node.js oficial como base
 FROM node:20
 
-# Diretório de trabalho para o servidor Node.js
+# Defina o diretório de trabalho no contêiner
 WORKDIR /app
 
-# Copia os arquivos de configuração do servidor
+ENV SERVER_PORT=3000
+
+# Copie os arquivos de dependências do Node.js para o contêiner
 COPY package*.json ./
 
-# Instala as dependências do servidor
+# Instale as dependências do Node.js
 RUN npm install
 
-# Copia o código-fonte do servidor
+# Copie o restante dos arquivos da aplicação para o contêiner
 COPY . .
 
-# Instala as dependências da aplicação React e faz a build
-RUN cd /app/client && npm install && npm run build
+# Construa a aplicação React
+RUN cd client && npm install && npm run build
 
-# Expõe a porta para o servidor
-EXPOSE 3000
+# Mova os arquivos de build do React para o diretório público do Express
+#RUN mkdir -p /app/public && cp -r client/build/* /app/public/
 
-# Comando para iniciar o servidor
+# Exponha a porta que a aplicação irá rodar
+EXPOSE 3000:3000
+
+# Comando para iniciar a aplicação Node.js
 CMD ["node", "server.js"]

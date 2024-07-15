@@ -1,3 +1,8 @@
+
+GET http://localhost:3000/user/user-role-protected-endpoint
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJhY3BjYW50dSIsInJvbGUiOiJVU0VSIiwiaWF0IjoxNzIwMjkzMzE5LCJleHAiOjE3MjAyOTMzNzl9.HXwNejor0c8lCp8Yq6mL1TJn3bY_bE6YZPCkNjgfmzA
+
+###
 GET http://localhost:3000/test/test
 
 ###
@@ -11,8 +16,7 @@ Content-Type: application/json
 
 {
     "username": "Ana catanduva",
-    "password": "suvaco123",
-    "role": "USER"
+    "password": "suvaco123"
 }
 
 ###
@@ -21,7 +25,7 @@ POST http://localhost:3000/auth/login
 Content-Type: application/json
 
 {
-    "username": "Johnss Travolta",
+    "username": "Ana catanduva",
     "password": "suvaco123"
 }
 

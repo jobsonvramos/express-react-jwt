@@ -1,30 +1,28 @@
-const express = require('express');
+const express = require('express')
+const bodyParser = require('body-parser')
 const path = require('path');
-const bodyParser = require('body-parser');
-const db = require('./models');
-const authRoutes = require('./routes/auth');
-const protectedRoutes = require('./routes/protected');
-const testRoutes = require('./routes/test');
+const db = require('./models/')
+const authRoutes = require('./routes/auth')
+const userRoutes = require('./routes/user')
 
 const app = express();
 
-app.use(bodyParser.json());
+app.use(bodyParser.json())
 
-// Rotas de API
-app.use('/auth', authRoutes);
-app.use('/protected', protectedRoutes);
-app.use('/test', testRoutes);
+app.use('/auth', authRoutes)
+app.use('/user', userRoutes)
 
-// Servir arquivos estáticos da aplicação React
-app.use(express.static(path.join(__dirname, 'client/build')));
+app.use(express.static(path.join(__dirname, 'client/build')))
 
-// Rota para servir a aplicação React
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
+    res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
 });
+
+const serverPort = process.env.SERVER_PORT ?? 3000
+
 
 db.sequelize.sync().then(() => {
-  app.listen(3000, () => {
-    console.log('Server is running on port 3000');
-  });
-});
+    app.listen(serverPort, () => {
+        console.log("server running on port:"+serverPort)
+    })
+})

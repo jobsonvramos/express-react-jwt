@@ -1,11 +1,12 @@
-const { Sequelize } = require('sequelize');
-const config = require('../config/config.js');
-const sequelize = new Sequelize(config.development);
+const { Sequelize } = require('sequelize')
+const config = require('../config/config.js')
 
-const db = {};
+const sequelize = new Sequelize(config.development)
 
-db.Sequelize = Sequelize;
-db.sequelize = sequelize;
-db.User = require('./user.js')(sequelize, Sequelize);
+const db = {}
 
-module.exports = db;
+db.Sequelize = Sequelize
+db.sequelize = sequelize
+db.User = require('./User.js')(sequelize, Sequelize)
+
+module.exports = db
